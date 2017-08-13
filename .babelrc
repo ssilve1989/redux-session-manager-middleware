@@ -7,8 +7,7 @@
 					"browsers": [
 						"defaults"
 					]
-				},
-				"debug" : true
+				}
 			}
 		]
 	]
