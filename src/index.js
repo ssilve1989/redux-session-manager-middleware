@@ -37,13 +37,14 @@ export function cleanse(state = {}, exclusionMap = {}) {
 }
 
 
-export default (options) => {
+export default (options={}) => {
 	return store => next => action => {
 		const { exclude = [] } = options;
 		if(!exclude.includes(action.type)) {
 			const state = cleanse(store.getState());
-			sessionStorage.setItem(options.name, JSON.stringify(state.toJS()));
+			sessionStorage.setItem(options.name, JSON.stringify(state));
 		}
+		console.log(next);
 		next(action);
 	};
 };

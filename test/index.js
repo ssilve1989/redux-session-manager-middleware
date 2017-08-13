@@ -4,7 +4,7 @@ import sessionManagerMiddleware, { cleanse, deleteInPath } from '../src/index';
 describe('Session Manager', () => {
 	const doDispatch  = () => {};
 	const doGetState  = () => {};
-	const nextHandler = sessionManagerMiddleware({})({ dispatch: doDispatch, getState: doGetState });
+	const nextHandler = sessionManagerMiddleware()({ dispatch: doDispatch, getState: doGetState });
 
 	it('must return a function to handle next', () => {
 		assert.isFunction(nextHandler);
@@ -15,16 +15,6 @@ describe('Session Manager', () => {
 		const actionHandler = nextHandler();
 		assert.isFunction(actionHandler);
 		assert.strictEqual(actionHandler.length, 1);
-
-		describe('handle action', () => {
-			it('must run the given action function with dispatch and getState', done => {
-				const actionHandler = nextHandler();
-				actionHandler((dispatch, getState) => {
-					assert.strictEqual(dispatch, doDispatch);
-					assert.strictEqual(getState, doGetState);
-				});
-			});
-		});
 	});
 
 	describe('deleteInPath', () => {
