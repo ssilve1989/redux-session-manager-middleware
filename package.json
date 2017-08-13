@@ -10,6 +10,9 @@
 		"dist",
 		"README.md"
 	],
+	"engines": {
+		"node" : ">=7.10.1"
+	},
 	"config": {
 		"commitizen": {
 			"path": "cz-conventional-changelog"
