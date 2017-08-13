@@ -19,7 +19,7 @@ export function deleteInPath(obj, path) {
  * @param {object} state
  * @param {object} exclude
  */
-export function cleanse(state = {}, exclude = {}) {
+export function cleanse(state, exclude = {}) {
 	state = Object.assign({}, state);
 	for(let [ reducer, values ] of Object.entries(exclude)) {
 		if(values === WILDCARD) {
