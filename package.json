@@ -39,7 +39,7 @@
 		"test": "mocha --compilers js:babel-core/register --require ./test/setup.js",
 		"test:watch": "npm run test -- --watch",
 		"precommit" : "npm test",
-		"commit": "git cz",
+		"cz": "git cz",
 		"prebuild": "rimraf ./dist",
 		"build": "babel src --out-dir dist",
 		"semantic-release": "semantic-release pre && npm publish && semantic-release post"
