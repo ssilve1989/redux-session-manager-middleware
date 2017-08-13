@@ -37,14 +37,21 @@ export function cleanse(state = {}, exclusionMap = {}) {
 }
 
 
+/**
+ *
+ * @param {object} options
+ * @property {string} options.name - The name of the property to set in sessionStorage
+ * @property {object} [options.exclude={}] - An object representing parts of the state to exclude
+ * @property {Array} [options.ignoreActions=[]]
+ * @returns {function(*=): function(*=): function(*=)}
+ */
 export default (options={}) => {
 	return store => next => action => {
-		const { exclude = [] } = options;
-		if(!exclude.includes(action.type)) {
-			const state = cleanse(store.getState());
+		const { ignoreActions = [] } = options;
+		if(!ignoreActions.includes(action.type)) {
+			const state = cleanse(store.getState(), options.exclude);
 			sessionStorage.setItem(options.name, JSON.stringify(state));
 		}
-		console.log(next);
 		next(action);
 	};
 };
