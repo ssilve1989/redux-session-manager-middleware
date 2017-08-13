@@ -15,5 +15,7 @@ script:
 after_success:
   - npm run semantic-release
 branches:
+  only:
+    - master
   except:
     - /^v\d+\.\d+\.\d+$/
