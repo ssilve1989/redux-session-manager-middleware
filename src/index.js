@@ -17,12 +17,11 @@ export function deleteInPath(obj, path) {
 /**
  *
  * @param {object} state
- * @param {object} exclusionMap
+ * @param {object} exclude
  */
-export function cleanse(state = {}, exclusionMap = {}) {
-	state        = Object.assign({}, state);
-	exclusionMap = new Map(Object.entries(exclusionMap));
-	exclusionMap.forEach((values, reducer) => {
+export function cleanse(state = {}, exclude = {}) {
+	state = Object.assign({}, state);
+	for(let [ reducer, values ] of Object.entries(exclude)) {
 		if(values === WILDCARD) {
 			delete state[ reducer ];
 		}
@@ -32,7 +31,7 @@ export function cleanse(state = {}, exclusionMap = {}) {
 		else {
 			deleteInPath(state[ reducer ], values);
 		}
-	});
+	}
 	return state;
 }
 
@@ -45,7 +44,7 @@ export function cleanse(state = {}, exclusionMap = {}) {
  * @property {Array} [options.ignoreActions=[]]
  * @returns {function(*=): function(*=): function(*=)}
  */
-export default (options={}) => {
+export default (options = {}) => {
 	return store => next => action => {
 		const { ignoreActions = [] } = options;
 		if(!ignoreActions.includes(action.type)) {
