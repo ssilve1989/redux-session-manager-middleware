@@ -1,5 +1,5 @@
 # Redux Session Manager Middleware
-[![Travis](https://img.shields.io/travis/ssilve1989/redux-session-manager-middleware?style=flat-square)](https://travis-ci.org/ssilve1989/redux-session-manager-middleware)
+[![Travis](https://img.shields.io/travis/ssilve1989/redux-session-manager-middleware.svg)](https://travis-ci.org/ssilve1989/redux-session-manager-middleware)
 [![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/redux-session-manager-middleware)
 
 This middleware will serialize your redux store to sessionStorage for yout **client-side only** app, to allow you to populate the redux store with a preloaded state on refresh. *(SSR apps would handle this differently)*. How to restore the state is described [here](#restoring-state).
