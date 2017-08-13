@@ -4,7 +4,6 @@ module.exports = {
         "browser": true,
         "commonjs": true
     },
-    plugins: ['flowtype'],
     "extends": "eslint:recommended",
     "rules": {
         "indent": [
