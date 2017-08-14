@@ -21,15 +21,15 @@ export function deleteInPath(obj, path) {
  */
 export function cleanse(state, exclude = {}) {
 	state = Object.assign({}, state);
-	for(let [ reducer, values ] of Object.entries(exclude)) {
-		if(values === WILDCARD) {
+	for(let [ reducer, keyPath ] of Object.entries(exclude)) {
+		if(keyPath === WILDCARD) {
 			delete state[ reducer ];
 		}
-		else if(!Array.isArray(values)) {
-			throw TypeError(`Expected ${values} to be an array`);
+		else if(!Array.isArray(keyPath)) {
+			throw TypeError(`Expected ${keyPath} to be an array`);
 		}
 		else {
-			deleteInPath(state[ reducer ], values);
+			deleteInPath(state[ reducer ], keyPath);
 		}
 	}
 	return state;
@@ -51,6 +51,6 @@ export default (options = {}) => {
 			const state = cleanse(store.getState(), options.exclude);
 			sessionStorage.setItem(options.name, JSON.stringify(state));
 		}
-		next(action);
+		return next(action);
 	};
 };
