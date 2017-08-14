@@ -44,6 +44,6 @@ You may need to provide a `reviver` function to `JSON.parse` if you had custom c
 
 ### FAQ
 
-**Q: My state isn't being saved after an action dispataches**
+**Q: My state isn't being saved after an action dispatches**
 
 A: Since this is *middleware*, it is executed before the reducer receives the action to update the state. So this serialization is essentially 1 action behind. I've experimented with ugly hacks to get the modified state after the reducer but none that are worth shipping. If anyone has any ideas feel free to contribute!
