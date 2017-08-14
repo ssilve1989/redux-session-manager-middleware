@@ -6,17 +6,6 @@ describe('Session Manager', () => {
 	const doGetState  = () => {};
 	const nextHandler = sessionManagerMiddleware()({ dispatch: doDispatch, getState: doGetState });
 
-	it('must return a function to handle next', () => {
-		assert.isFunction(nextHandler);
-		assert.strictEqual(nextHandler.length, 1);
-	});
-
-	describe('handle next', () => {
-		const actionHandler = nextHandler();
-		assert.isFunction(actionHandler);
-		assert.strictEqual(actionHandler.length, 1);
-	});
-
 	describe('deleteInPath', () => {
 		it('deletes a nested property', () => {
 			const a = { b: { c: { d: 1 } } };
