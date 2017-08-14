@@ -18,7 +18,13 @@ being that this middleware requires an options argument
 import { createStore } from 'redux';
 import sessionManager from 'redux-session-manager-middleware'
 
-const options = { ... };
+const options = { 
+  name : "myApplication",
+  exclude : {
+    "myReducer1" : '*',
+    "myReducer2" : ['keys', 'to', 'excluded', 'property']
+  }
+};
 const store = createStore(reducers, [ sessionManager(options)])
 ```
 
