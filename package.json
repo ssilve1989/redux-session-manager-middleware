@@ -52,7 +52,9 @@
 		"redux",
 		"sessionStorage",
 		"middleware",
-		"state management"
+		"state management",
+		"redux-middlware",
+		"flux"
 	],
 	"author": "Steven Silvestri <steven.m.silvestri@gmail.com> (https://ssilve1989.github.io/)",
 	"license": "MIT",
