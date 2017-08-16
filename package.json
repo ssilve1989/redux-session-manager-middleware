@@ -1,6 +1,6 @@
 {
   "name": "redux-session-manager-middleware",
-  "version": "2.1.0-beta.0",
+  "version": "2.1.0",
   "description": "Middleware for managing state in redux client-side apps",
   "main": "dist/index.js",
   "directories": {
