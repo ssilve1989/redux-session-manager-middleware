@@ -1,5 +1,3 @@
-const WILDCARD = '*';
-
 /**
  * Deletes the reference to a value specified by the path
  * @param {object} obj - source object
@@ -17,21 +15,51 @@ export function deleteInPath(obj, path) {
 /**
  *
  * @param {object} state
- * @param {object} exclude
+ * @param {array} exclude
  */
-export function cleanse(state, exclude = {}) {
+export function cleanse(state, exclude = []) {
 	state = Object.assign({}, state);
-	for(let [ reducer, keyPath ] of Object.entries(exclude)) {
-		if(keyPath === WILDCARD) {
-			delete state[ reducer ];
+
+	exclude.forEach(exclusion => {
+		if(Array.isArray(exclusion)) {
+			// It is a key-value pair representation.
+			// Meaning the first value will be the reducer name
+			// and the second value will be an array of key paths
+			const reducer  = exclusion[ 0 ];
+			const keyPaths = exclusion[ 1 ];
+
+			// If its not an array, inform the caller
+			if(!Array.isArray(keyPaths)) {
+				throw TypeError(`Expected value to be an array, instead received ${typeof keyPaths}`);
+			}
+
+			keyPaths.forEach(keyPath => {
+				// Each element in the array could either be a string representing a single property
+				// or an array representing a path to the property
+				if(typeof keyPath === 'string') {
+					delete state[ reducer ][ keyPath ];
+				}
+				else if(Array.isArray(keyPath)) {
+					deleteInPath(state[ reducer ], keyPath);
+				}
+			});
 		}
-		else if(!Array.isArray(keyPath)) {
-			throw TypeError(`Expected ${keyPath} to be an array`);
+		else if(typeof exclusion === 'string') {
+			delete state[ exclusion ];
 		}
-		else {
-			deleteInPath(state[ reducer ], keyPath);
-		}
-	}
+	});
+
+	// for(let [ reducer, keyPath ] of Object.entries(exclude)) {
+	// 	if(keyPath === WILDCARD) {
+	// 		delete state[ reducer ];
+	// 	}
+	// 	else if(!Array.isArray(keyPath)) {
+	// 		throw TypeError(`Expected ${keyPath} to be an array`);
+	// 	}
+	// 	else {
+	// 		deleteInPath(state[ reducer ], keyPath);
+	// 	}
+	// }
 	return state;
 }
 

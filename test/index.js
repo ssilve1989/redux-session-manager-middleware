@@ -1,11 +1,7 @@
-import { expect, assert } from 'chai';
-import sessionManagerMiddleware, { cleanse, deleteInPath } from '../src/index';
+import { expect } from 'chai';
+import { cleanse, deleteInPath } from '../src/index';
 
 describe('Session Manager', () => {
-	const doDispatch  = () => {};
-	const doGetState  = () => {};
-	const nextHandler = sessionManagerMiddleware()({ dispatch: doDispatch, getState: doGetState });
-
 	describe('deleteInPath', () => {
 		it('deletes a nested property', () => {
 			const a = { b: { c: { d: 1 } } };
@@ -25,28 +21,38 @@ describe('Session Manager', () => {
 				}
 			};
 
-			const newState = cleanse(state, {
-				d: '*'
-			});
+			const newState = cleanse(state, [ 'd' ]);
 
 			expect(newState).to.eql({ b: { c: 1 } });
 		});
 
 		it('deletes a specific nested entry', () => {
 			const state = {
-				b : {
-					c : {
+				b: {
+					c: {
 						d: 1
+					},
+					e: {
+						x: 123
+					},
+					f: {
+						h: 243
 					}
 				}
 			};
 
-			const newState = cleanse(state, {
-				b : ['c', 'd']
-			});
+			const newState = cleanse(state, [
+				[ 'b', [
+					[ 'c', 'd' ],
+					'e',
+					[ 'f', 'h' ]
+				]]
+			]);
+
 			expect(newState).to.eql({
-				b : {
-					c: {}
+				b: {
+					c: {},
+					f: {}
 				}
 			});
 		});

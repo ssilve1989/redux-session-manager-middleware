@@ -20,10 +20,16 @@ import sessionManager from 'redux-session-manager-middleware'
 
 const options = { 
   name : "myApplication",
-  exclude : {
-    "myReducer1" : '*',
-    "myReducer2" : ['keys', 'to', 'excluded', 'property']
-  }
+  exclude : [
+    "myReducer1",
+    [
+    	"myReducer2", [
+    		'excludedProp1'
+    	    ['keys', 'to', 'excluded', 'property2']
+        ]
+    ]
+  ],
+  ignoreActions: [ ACTION_1, ACTION_2 ]
 };
 const store = createStore(reducers, [ sessionManager(options)])
 ```
@@ -33,7 +39,7 @@ const store = createStore(reducers, [ sessionManager(options)])
 |:---|:---|:---|:---
 name | string | yes | This will be the key in sessionStorage for the serialized state |
 ignoreActions | array | no | An array of action types that will not execute this middleware |
-exclude | object | no | An object where the key is the name of the reducer containing state to exclude from serialization and the value is either a `'*'` to indicate the entire reducer state, or an array reprenting the keyPath to the part to exclude. Ex ```const exclude = { myReducer : ['prop1', 'nestedProp2', 'value'] }```
+exclude | array[string\|array] | no | An array containing either a string representing the reducer to exclude, or an array of [reducerName, keyPaths] where keyPaths can be either a string for a direct property of the reducer, or an array representing the keyPath to the property to be excluded.
 
 
 ### Restoring state
