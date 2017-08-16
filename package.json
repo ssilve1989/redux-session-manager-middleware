@@ -1,71 +1,71 @@
 {
-	"name": "redux-session-manager-middleware",
-	"version": "2.0.0",
-	"description": "Middleware for managing state in redux client-side apps",
-	"main": "dist/index.js",
-	"directories": {
-		"test": "test"
-	},
-	"files": [
-		"dist",
-		"README.md"
-	],
-	"engines": {
-		"node": ">=7.10.1"
-	},
-	"config": {
-		"commitizen": {
-			"path": "cz-conventional-changelog"
-		}
-	},
-	"peerDependencies": {
-		"immutable": "4.0.0-rc.2"
-	},
-	"dependencies": {},
-	"devDependencies": {
-		"babel-cli": "6.24.1",
-		"babel-core": "6.25.0",
-		"babel-eslint": "7.2.3",
-		"babel-preset-env": "1.6.0",
-		"babel-register": "6.24.1",
-		"chai": "4.1.1",
-		"commitizen": "2.9.6",
-		"cz-conventional-changelog": "2.0.0",
-		"eslint": "4.4.1",
-		"husky": "0.14.3",
-		"isparta": "4.0.0",
-		"immutable": "4.0.0-rc.2",
-		"mocha": "3.5.0",
-		"rimraf": "2.6.1",
-		"standard-version": "4.2.0"
-	},
-	"scripts": {
-		"test": "mocha --compilers js:babel-core/register --require ./test/setup.js `find ./test -name \"*.js\"`",
-		"test:watch": "npm run test -- --watch",
-		"precommit": "npm test",
-		"cz": "git cz",
-		"prebuild": "rimraf ./dist",
-		"build": "babel src --out-dir dist",
-		"prerelease": "npm run build",
-		"release:beta": "npm run release -- --prerelease beta",
-		"release": "standard-version"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/ssilve1989/redux-session-manager-middleware.git"
-	},
-	"keywords": [
-		"redux",
-		"sessionStorage",
-		"middleware",
-		"state management",
-		"redux-middlware",
-		"flux"
-	],
-	"author": "Steven Silvestri <steven.m.silvestri@gmail.com> (https://ssilve1989.github.io/)",
-	"license": "MIT",
-	"bugs": {
-		"url": "https://github.com/ssilve1989/redux-session-manager-middleware/issues"
-	},
-	"homepage": "https://github.com/ssilve1989/redux-session-manager-middleware#readme"
+  "name": "redux-session-manager-middleware",
+  "version": "2.1.0-beta.0",
+  "description": "Middleware for managing state in redux client-side apps",
+  "main": "dist/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">=7.10.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "peerDependencies": {
+    "immutable": "4.0.0-rc.2"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "6.24.1",
+    "babel-core": "6.25.0",
+    "babel-eslint": "7.2.3",
+    "babel-preset-env": "1.6.0",
+    "babel-register": "6.24.1",
+    "chai": "4.1.1",
+    "commitizen": "2.9.6",
+    "cz-conventional-changelog": "2.0.0",
+    "eslint": "4.4.1",
+    "husky": "0.14.3",
+    "isparta": "4.0.0",
+    "immutable": "4.0.0-rc.2",
+    "mocha": "3.5.0",
+    "rimraf": "2.6.1",
+    "standard-version": "4.2.0"
+  },
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register --require ./test/setup.js `find ./test -name \"*.js\"`",
+    "test:watch": "npm run test -- --watch",
+    "precommit": "npm test",
+    "cz": "git cz",
+    "prebuild": "rimraf ./dist",
+    "build": "babel src --out-dir dist",
+    "prerelease": "npm run build",
+    "release:beta": "npm run release -- --prerelease beta",
+    "release": "standard-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ssilve1989/redux-session-manager-middleware.git"
+  },
+  "keywords": [
+    "redux",
+    "sessionStorage",
+    "middleware",
+    "state management",
+    "redux-middlware",
+    "flux"
+  ],
+  "author": "Steven Silvestri <steven.m.silvestri@gmail.com> (https://ssilve1989.github.io/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ssilve1989/redux-session-manager-middleware/issues"
+  },
+  "homepage": "https://github.com/ssilve1989/redux-session-manager-middleware#readme"
 }
