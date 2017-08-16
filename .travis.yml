@@ -13,7 +13,8 @@ script:
   - npm run test
   - npm run build
 after_success:
-  - npm run semantic-release
+  - npm run release
+  - npm publish 
 branches:
   only:
     - master
