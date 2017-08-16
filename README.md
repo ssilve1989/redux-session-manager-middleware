@@ -25,7 +25,7 @@ const options = {
     [
     	"myReducer2", [
     		'excludedProp1'
-    	    ['keys', 'to', 'excluded', 'property2']
+    		['keys', 'to', 'excluded', 'property2']
         ]
     ]
   ],
