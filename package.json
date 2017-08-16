@@ -47,6 +47,7 @@
 		"prebuild": "rimraf ./dist",
 		"build": "babel src --out-dir dist",
 		"prerelease": "npm run build",
+		"release:beta": "npm run release -- --prerelease beta",
 		"release": "standard-version"
 	},
 	"repository": {
