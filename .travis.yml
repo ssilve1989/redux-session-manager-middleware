@@ -1,22 +1,32 @@
 language: node_js
 cache:
   directories:
-    - node_modules
+  - node_modules
 notifications:
   email: false
 node_js:
-  - 'node'
-  - '7'
+- node
+- '7'
 before_script:
-  - npm prune
+- npm prune
 script:
-  - npm run test
-  - npm run build
+- npm run test
+- npm run build
 after_success:
-  - npm run release
-  - npm publish 
+- npm run release
+- npm publish
 branches:
   only:
-    - master
+  - master
   except:
-    - /^v\d+\.\d+\.\d+$/
+  - "/^v\\d+\\.\\d+\\.\\d+$/"
+before_deploy: "touch .npmignore"
+deploy:
+  provider: npm
+  skip_cleanup: true
+  email: steven.m.silvestri@gmail.com
+  api_key:
+    secure: bZ5qxCYqS83g1DtxrHjnex9leOCqvApNIEDAG3VZ/Td5LfRLIfTe4WiXK6hzrz5e8aM46sqODxqwRakWNj7WHXzODDRf5oCnYvXn+O3Nn/tUFGR9DbUhm/e3t8P3iy+QJidphPVdd+/sonEWviLLwj8cPZRG94REeE2Ut5YnGWAAA0m8RCR0Tk4Y54JHbmK7oqBSbsHlfkqOyNu5UXS2oQ5KugbwuyaPN9G+wQHbqA5RXWJ2DWNAiFKzQgdPRcYwGDRg4iZAOUlmJNy5aw0FRPkAHpwh/BbpWY+vsG7eRbGaoC5B3lUxLW5ibWMTQDVlO6GBxKwqpEd4pKJRr3QppZLrXj4rL1pkjjKYzr2FEEUQTUN3Iy+afXEdxMoGkp7/p4ymyHyZCB9QuwboNy1ED9bb8rylo7ykX9CLFd+4zzQmca79LLxVY5A84PdA6Z8VqSTEQTWaaCj/qLCCujSg2p0A9ky54EAfxwPSP/t6G5r0wfKll4rEqZSkzIcmqqg3NJWLqnWZa068HFc5N1ATDBc7cRApmqFBMEsSoYOEPi5R+bq+BlL6CZoTYzSbO8IoDA5/qCa6uypU1iV//4OJmBff7qqHkMxd5K3ZUE2F43KCFezAzpxmHgFPCa9SVhN1XsAFCjN3zUuTE/AkOPT34lisYYQ1nETeMxfTr+gzUos=
+  on:
+    tags: true
+    repo: ssilve1989/redux-session-manager-middleware
