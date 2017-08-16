@@ -48,18 +48,6 @@ export function cleanse(state, exclude = []) {
 			delete state[ exclusion ];
 		}
 	});
-
-	// for(let [ reducer, keyPath ] of Object.entries(exclude)) {
-	// 	if(keyPath === WILDCARD) {
-	// 		delete state[ reducer ];
-	// 	}
-	// 	else if(!Array.isArray(keyPath)) {
-	// 		throw TypeError(`Expected ${keyPath} to be an array`);
-	// 	}
-	// 	else {
-	// 		deleteInPath(state[ reducer ], keyPath);
-	// 	}
-	// }
 	return state;
 }
 

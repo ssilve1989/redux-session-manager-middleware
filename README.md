@@ -34,6 +34,14 @@ const options = {
 const store = createStore(reducers, [ sessionManager(options)])
 ```
 
+### ImmutableJS
+If you are using ImmutableJS for your redux store, you can just change the import to
+```javascript
+import sessionManager from 'redux-session-manager-middleware/dist/immutable';
+```
+**IMPORTANT** This expects ImmutableJS v4.x+. Currently the 4.x branch is on release-candidate status. This branch
+is needed because it provides `Map.deleteIn` that this middleware leverages.
+
 ### Options
 | Property | Type | Required? | Description |
 |:---|:---|:---|:---
