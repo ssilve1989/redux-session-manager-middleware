@@ -12,7 +12,7 @@ export default (options = {}) => {
 
 			log.debug(DEBUG_PREFIX, FORMATTING, 'Saving state as: ', state);
 
-			sessionStorage.setItem(options.name, JSON.stringify(state));
+			sessionStorage.setItem(options.name, JSON.stringify(state.toJS()));
 		}
 
 		return next(action);
