@@ -21,7 +21,9 @@
   "peerDependencies": {
     "immutable": "4.0.0-rc.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "loglevel": "1.4.1"
+  },
   "devDependencies": {
     "babel-cli": "6.24.1",
     "babel-core": "6.25.0",

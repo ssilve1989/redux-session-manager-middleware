@@ -1,3 +1,6 @@
+import * as log from 'loglevel';
+import { DEBUG_PREFIX, FORMATTING } from './constants';
+
 /**
  * Deletes the reference to a value specified by the path
  * @param {object} obj - source object
@@ -51,7 +54,6 @@ export function cleanse(state, exclude = []) {
 	return state;
 }
 
-
 /**
  *
  * @param {object} options
@@ -62,11 +64,17 @@ export function cleanse(state, exclude = []) {
  */
 export default (options = {}) => {
 	return store => next => action => {
+		log.setLevel(options.debug ? 'debug' : 'info');
 		const { ignoreActions = [] } = options;
+
 		if(!ignoreActions.includes(action.type)) {
 			const state = cleanse(store.getState(), options.exclude);
+
+			log.debug(DEBUG_PREFIX, FORMATTING, 'Saving state as:', state);
+
 			sessionStorage.setItem(options.name, JSON.stringify(state));
 		}
+
 		return next(action);
 	};
 };

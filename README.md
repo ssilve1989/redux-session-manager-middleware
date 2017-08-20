@@ -48,6 +48,7 @@ is needed because it provides `Map.deleteIn` that this middleware leverages.
 name | string | yes | This will be the key in sessionStorage for the serialized state |
 ignoreActions | array | no | An array of action types that will not execute this middleware |
 exclude | array[string\|array] | no | An array containing either a string representing the reducer to exclude, or an array of [reducerName, keyPaths] where keyPaths can be either a string for a direct property of the reducer, or an array representing the keyPath to the property to be excluded.
+debug | boolean | no | Enable debugging output
 
 
 ### Restoring state
