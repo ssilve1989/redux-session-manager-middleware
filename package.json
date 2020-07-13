@@ -37,7 +37,7 @@
     "immutable": "4.0.0-rc.2",
     "mocha": "3.5.0",
     "rimraf": "2.6.1",
-    "standard-version": "4.2.0"
+    "standard-version": "8.0.1"
   },
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --require ./test/setup.js `find ./test -name \"*.js\"`",
